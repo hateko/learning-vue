@@ -16,6 +16,7 @@
   </div>
 </body>
 <script type="module">
+  // =======================================>     插值
   // 模板 => 虚拟dom => Dom
   // 也可render直接写，可用jsx
   import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.esm.browser.js'
@@ -23,12 +24,47 @@
     el: '#example',
     data: {
       msg: 'example',
-      rawHtml: '<div>demo</div>'  // v-html 解释成标签
+      rawHtml: '<div>demo</div>'  // v-html 解释成标签，这里会忽略标签内部的数值绑定， 容易导致xss攻击
     },
   })
 
   // v-once 一次渲染
   // {{}} 内部解释成文本
   
+
+  // attribute 初始值为！！false, 不会渲染，也就是属性存在就必须是true
+
+  // 模板中支持且只支持一个表达式
+
+  // 存在全局白名单，不能篡改全局变量
+  // const allowedGlobals = makeMap(
+  //   'Infinity,undefined,NaN,isFinite,isNaN,' +
+  //   'parseFloat,parseInt,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,' +
+  //   'Math,Number,Date,Array,Object,Boolean,String,RegExp,Map,Set,JSON,Intl,' +
+  //   'require' // for Webpack/Browserify
+  // )
+
+
+  // ==========================================>   指令
+  /*
+    v-if v-for v-on v-bind 这种，支持动态参数
+    v-bind: []="someAttr" 这种
+    v-on: []="someEvent"   注意边界，null会移除动态参数指令
+    对于参数是复杂表达式，用计算属性代替，注意attr小写，浏览器会强转
+  */
+
+  /*
+    .修饰符特殊方式绑定
+    ？？？？？？？？？？？？？？？？？ todo 记得整理所有
+  */
+
+  // ============================================> 缩写
+  /*
+    v-bind:attr => :attr
+    v-bind:[attr] => :[]
+    v-on:event => @event
+    v-on:[event] => @[event]
+     
+  */
 </script>
 </html>
