@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="example">
+    <span v-once>这个将不会改变: {{ msg }}</span>
+    <p>Using mustaches: {{ rawHtml }}</p>
+    <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+  </div>
+</body>
+<script type="module">
+  // 模板 => 虚拟dom => Dom
+  // 也可render直接写，可用jsx
+  import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.esm.browser.js'
+  var vm = new Vue({
+    el: '#example',
+    data: {
+      msg: 'example',
+      rawHtml: '<div>demo</div>'  // v-html 解释成标签
+    },
+  })
+
+  // v-once 一次渲染
+  // {{}} 内部解释成文本
+  
+</script>
+</html>
